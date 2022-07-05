@@ -32,7 +32,11 @@ class CryptoPresenter : AnyPresenter {
     
     var router: AnyRouter?
     
-    var interactor: AnyInteractor?
+    var interactor: AnyInteractor? {
+        didSet {
+            interactor?.downloadCryptos()
+        }
+    }
     
     var view: AnyView?
     
@@ -40,11 +44,9 @@ class CryptoPresenter : AnyPresenter {
         
         switch result {
         case .success(let cryptos):
-            //view.update
-            print("update")
-        case .failure(let error):
-            //view.updateerror
-            print("error")
+            view?.update(with: cryptos)
+        case .failure(_):
+            view?.update(with: "Try Again Later")
         }
     }
     
