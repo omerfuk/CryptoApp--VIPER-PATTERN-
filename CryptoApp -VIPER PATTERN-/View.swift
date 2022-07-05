@@ -44,7 +44,7 @@ class CryptoViewController: UIViewController, AnyView, UITableViewDelegate, UITa
     private let messageLabel: UILabel = {
        
         let label = UILabel()
-        label.isHidden = true
+        label.isHidden = false
         label.text = "Downloading..."
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .black
@@ -55,12 +55,14 @@ class CryptoViewController: UIViewController, AnyView, UITableViewDelegate, UITa
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .yellow
         
         view.addSubview(tableView)
         view.addSubview(messageLabel)
         
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,7 +84,7 @@ class CryptoViewController: UIViewController, AnyView, UITableViewDelegate, UITa
     func update(with cryptos: [Crypto]) {
         DispatchQueue.main.async {
             self.cryptos = cryptos
-            self.messageLabel.isHidden = false
+            self.messageLabel.isHidden = true
             self.tableView.reloadData()
             self.tableView.isHidden = false
         }
