@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+// Class, Protocol
+// Talks to -> interactor, router, presenter
+

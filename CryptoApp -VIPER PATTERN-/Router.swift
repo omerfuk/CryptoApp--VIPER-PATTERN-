@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+
+// Class, Protocol
+// Entry Point should be determined on this Router Class
+
+protocol AnyRouter {
+    
+    static func startExecution() -> AnyRouter
+    
+}
+
+
+class CryptoRouter: AnyRouter {
+    
+    static func startExecution() -> AnyRouter {
+        
+        let router = CryptoRouter()
+        return router
+    }
+    
+    
+    
+    
+}
